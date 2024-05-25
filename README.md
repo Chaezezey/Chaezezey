@@ -1,2 +1,105 @@
-# Micmocx
-HTML
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page 1 ni Micmoc</title>
+    <link rel="stylesheet" href="page1.css">
+</head>
+<body bgcolor="gray"> 
+    <center><h1>Page 1 ni Micmoc</h1></center> 
+    <center><h2>With my Bebucakes Annelyn</h2></center>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="image1.jpeg" alt="Image 1">
+        </div>
+        <div class="gallery-item">
+            <img src="image2.jpeg" alt="Image 2">
+        </div>
+        <div class="gallery-item">
+            <img src="image3.jpeg" alt="Image 3">
+        </div>
+        <div class="gallery-item">
+            <img src="image4.jpeg" alt="Image 4">
+        </div>
+        <div class="gallery-item">
+            <img src="image5.jpeg" alt="Image 5">
+        </div>
+        <div class="gallery-item">
+            <img src="image6.jpeg" alt="Image 6">
+        </div>
+    </div>
+
+    <div class="message-section">
+        <h1>HAPPY 1st MONTHSARRY</h1>
+        <p>First and Foremost. I would like to say that I LOVE YOU SO MUCH ANNELYN MY BEBU CAKES PRETTY SO MUCH!</p>
+        <p style="text-align: justify;">
+            Words alone won't be enough for me to express how thankful I am and how blessed I am to have someone like you in my life!<br>
+            I LOVE YOU SO MUCH! Thank you so much for staying with me and loving me since when I was courting you and till now that we are official.<br>
+            I also want you to know that you mean the world to me, not because my world revolves around you but you simply make my world move forward with your love.<br>
+            Love na Love kita and I hope that we grow much further together and love each other wholeheartedly.<br>
+            I give you my word and my heart that I'll be with you through Ups and Downs, Happiness and Sorrow, may it Rain or Shine.<br>
+            I will stay with you, love you, and give you the best out of everything within my capabilities.<br>
+            My Love, Annelyn Ambi. I LOVE YOU SO MUCH! HAPPY FIRST MONTHSARRY!<br>
+        </p>
+    </div>
+
+    <div class="music-player">
+        <img src="mundokocover.jpg" alt="Album Cover" class="album-cover">
+        <div class="music-info">
+            <h3>MUNDO</h3>
+            <p>Duration: <span id="duration">0:00</span></p>
+            <button id="play-pause" onclick="togglePlayPause()">Pause</button>
+        </div>
+        <audio id="background-music" autoplay>
+            <source src="mundo.mp3" type="audio/mp3">
+        </audio>
+    </div>
+
+    <div class="video-container">
+        <video autoplay muted loop id="background-video">
+            <source src="page1video.mp4" type="video/mp4">
+        </video>
+    </div>
+
+    <div class="overlay" id="overlay">
+        <span class="close" onclick="closeOverlay()">&times;</span>
+        <img class="overlay-content" id="overlay-img">
+    </div>
+
+    <script>
+        const audio = document.getElementById('background-music');
+        const playPauseButton = document.getElementById('play-pause');
+        const durationSpan = document.getElementById('duration');
+
+        audio.onloadedmetadata = function() {
+            const minutes = Math.floor(audio.duration / 60);
+            const seconds = Math.floor(audio.duration % 60);
+            durationSpan.textContent = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        };
+
+        function togglePlayPause() {
+            if (audio.paused) {
+                audio.play();
+                playPauseButton.textContent = 'Pause';
+            } else {
+                audio.pause();
+                playPauseButton.textContent = 'Play';
+            }
+        }
+
+        function openOverlay(src) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('overlay-img').src = src;
+        }
+
+        function closeOverlay() {
+            document.getElementById('overlay').style.display = 'none';
+        }
+
+        document.querySelectorAll('.gallery-item img').forEach(img => {
+            img.addEventListener('click', () => openOverlay(img.src));
+        });
+    </script>
+</body>
+</html>
